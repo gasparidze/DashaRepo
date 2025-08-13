@@ -8,20 +8,21 @@ public class Main {
          * ключевое слово new выделяет память в оперативке под новый объект и возвращает нам ссылку на него
          * и эта ссылка записывается в нашу переменную
          */
-        Human dasha = new Human();
-        dasha.name = "Dasha";
-        dasha.age = 17;
-        dasha.height = 160;
-        dasha.weight = 50;
+        Human dasha = new Human("Dasha", 17, 160, 50);
 
-        System.out.println(dasha);
+        System.out.println(dasha.getBalance());
+        dasha.setBalance(0);
+        System.out.println(dasha.getBalance());
+//        System.out.println(dasha);
+//        System.out.println(dasha.sayHello("Dasha"));
+//        dasha.sayHello();
 
-        Human artur = new Human();
-        dasha.name = "Artur";
-        dasha.age = 26;
-        dasha.height = 181;
-        dasha.weight = 72.2;
+        Human artur = new Human("Artur", 26, 181, 72.2);
+//        System.out.println(artur);
+//        System.out.println(dasha.sayHello("Artur"));
 
-        System.out.println(artur);
+        Human kate = new Human("Kate");
+
+        Human masha = new Human();
     }
 }
