@@ -18,6 +18,25 @@ public class Tiger extends Animal{
         this.uniqueParam = uniqueParam;
     }
 
+    /**
+     * Мы можем переоопределять логику/реализацию метода класса родителя в классе наследнике, но сигнатура должна быть идентичной
+     * @Override - аннотация , которая следит за сагнатурой метода
+     */
+    @Override
+    public void sayHello() {
+        System.out.println("hello from tiger");
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("sound from tiger");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("tiger is eating");
+    }
+
     public String getUniqueParam() {
         return uniqueParam;
     }

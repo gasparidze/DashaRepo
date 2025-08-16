@@ -8,6 +8,21 @@ public class Lion extends Animal{
         this.maneColor = maneColor;
     }
 
+    @Override
+    public void sayHello() {
+        System.out.println("hello from lion");
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("sound from lion");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("lion is eating");
+    }
+
     public String getManeColor() {
         return maneColor;
     }

@@ -8,6 +8,21 @@ public class Monkey extends Animal{
         this.quantityOfBananas = quantityOfBananas;
     }
 
+    @Override
+    public void sayHello() {
+        System.out.println("hello from monkey");
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("sound from monkey");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("monkey is eating");
+    }
+
     public int getQuantityOfBananas() {
         return quantityOfBananas;
     }
