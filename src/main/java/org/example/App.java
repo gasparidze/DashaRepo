@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 /**
  * Основные понятия:
  * 1) инициализация чего-либо - это создание или заполнение чего-либо
@@ -73,8 +75,18 @@ public class App {
          * тип данных + []
          * ключевое слово new выделяет память в оперативке под наш объект
          * кол-во элементов в массиве обязательно указываем, т.к. это нединамический массив
+         * справа обязательно указываем количество элементов в массиве
+         * обращение к массиву происходит по индексам
+         * индексация начинается с нуля
          */
-        int[] array = new int[10];
+        String[] array1 = new String[3];
+        System.out.println("массив изначально: " + Arrays.toString(array1));
+        array1[0] = "Hello";
+        array1[1] = "World";
+        array1[2] = "From Russia";
+        System.out.println("массив после инициализации: " + Arrays.toString(array1));
+        System.out.println(array1[2]);
+        //System.out.println(array1[3]); //ArrayIndexOutOfBoundsException
 
         /**
          * 4 основных вида цикла:
@@ -84,6 +96,7 @@ public class App {
          * 4) do-while
          */
 
+        int[] array = new int[10];
         /**
          * for с индексом обычно используется, если нужны индексы
          * int i = 0 - инициализация локальной переменной, которая является нашим счетчиком/индексом
