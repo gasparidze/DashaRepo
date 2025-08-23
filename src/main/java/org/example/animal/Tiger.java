@@ -9,6 +9,8 @@ package org.example.animal;
  * super(param1, .., paramN) - вызываем конструктор родителя
  * super.filed - обращаемся к полю класса родителя
  * super.method() - вызываем метод класса родителя
+ *
+ * Важно: в Java наследовать можно только один класс
  */
 public class Tiger extends Animal{
     private String uniqueParam;
