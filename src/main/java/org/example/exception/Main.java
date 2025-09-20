@@ -12,9 +12,6 @@ public class Main {
         NameValidation nameValidation = new NameValidation();
         try {
             nameValidation.checkName(name);
-        } catch (CustomException e) {
-            System.out.println("Выброшено исключение");
-            throw new RuntimeException();
         } finally {
             System.out.println("блок finally");
         }

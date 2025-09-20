@@ -16,7 +16,7 @@ package org.example.exception;
  *
  * Проверяемые исключения обязательно нужно обрабатывать либо пробрасывать. Непроверяемые — по желанию.
  */
-public class CustomException extends Exception {
+public class CustomException extends RuntimeException {
     public CustomException(String message) {
         super(message);
     }
