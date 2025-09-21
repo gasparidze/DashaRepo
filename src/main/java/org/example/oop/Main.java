@@ -17,6 +17,8 @@ public class Main {
 //        System.out.println(dasha.sayHello("Dasha"));
 //        dasha.sayHello();
 
+        System.out.println(Human.PI);
+
         Human artur = new Human("Artur", 26, 181, 72.2);
 //        System.out.println(artur);
 //        System.out.println(dasha.sayHello("Artur"));
@@ -24,5 +26,8 @@ public class Main {
         Human kate = new Human("Kate");
 
         Human masha = new Human();
+
+        System.out.println(Human.PI);
+        Human.sayHelloNew();
     }
 }

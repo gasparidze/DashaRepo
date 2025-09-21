@@ -1,7 +1,8 @@
 package org.example.animal;
 
 public class Lion extends Animal{
-    private String maneColor;
+    private String maneColor = "orange";
+    private static double PI_2 = 3.14;
 
     public Lion(String nickname , int age , String environment , double weight , String maneColor) {
         super(nickname , age , environment , weight);

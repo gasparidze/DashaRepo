@@ -19,7 +19,8 @@ public abstract class Animal {
     private String nickname;
     private int age;
     private String environment;
-    private double weight;
+    private double weight = 12;
+    private static double PI = 3.14;
 
     public Animal(String nickname , int age , String environment , double weight) {
         this.nickname = nickname;
