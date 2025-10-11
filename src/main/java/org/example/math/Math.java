@@ -2,7 +2,7 @@ package org.example.math;
 
 public class Math {
     public static void main(String[] args) {
-        int array[][] = new int[3][4];
+        int array[][] = new int[4][4];
         int k = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -11,40 +11,40 @@ public class Math {
             }
             System.out.println();
         }
-        diagonalPrint(array);
+        spiralPrint(array);
     }
 
-    public static void diagonalPrint(int[][] array){
-        int rows = array.length; // 3
-        int cols = array[0].length; // 4
+    public static void spiralPrint(int[][] array){
+        int top = 0, bottom = array.length - 1;
+        int left = 0, right = array[0].length - 1;
 
-        // печатаем диагонали, начинающиеся в первом столбце
-        for (int row = 0; row < rows; row++) {
-            int i = row;
-            int j = 0; // фиксируем столбец
-            while (i >= 0 && j < cols){
-                System.out.print(array[i][j]);
-                System.out.print("  -  ");
-                /**
-                 * уменьшим строку и увеличиваем диагональ
-                 */
-                i--;
-                j++;
+        while (top <= bottom && left <= right) {
+            // Верхняя строка слева направо
+            for (int j = left; j <= right; j++) {
+                System.out.print(array[top][j] + " ");
             }
-        }
+            top++;
 
-        for (int col = 1; col < cols; col++){
-            int i = rows - 1;
-            int j = col;
+            // Правый столбец сверху вниз
+            for (int i = top; i <= bottom; i++) {
+                System.out.print(array[i][right] + " ");
+            }
+            right--;
 
-            while (i >= 0 && j < cols){
-                System.out.print(array[i][j]);
-                System.out.print("  -  ");
-                /**
-                 * уменьшим строку и увеличиваем диагональ
-                 */
-                i--;
-                j++;
+            // Нижняя строка справа налево
+            if (top <= bottom) {
+                for (int j = right; j >= left; j--) {
+                    System.out.print(array[bottom][j] + " ");
+                }
+                bottom--;
+            }
+
+            // Левый столбец снизу вверх
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    System.out.print(array[i][left] + " ");
+                }
+                left++;
             }
         }
     }
