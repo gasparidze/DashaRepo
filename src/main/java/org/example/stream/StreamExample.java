@@ -2,6 +2,7 @@ package org.example.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,7 +28,7 @@ public class StreamExample {
      * 2) map - преобрзаует данные
      * 3) collect - преобразует в какую-либо коллекцию
      * 4) forEach - пробегается в цикле
-     * 5) peek -
+     * 5) peek - проводит какие-то промежуточные действия, не изменяя сам поток
      * 6) flatMap - разворачивает вложенный лист
      *
      * Неосновные, небольшие методы:
@@ -46,6 +47,13 @@ public class StreamExample {
 
         System.out.println(list);
         System.out.println(newList);
+
+        System.out.println("peek");
+        List<String> collect = newList.stream().peek(System.out::println).map(el -> el.toUpperCase()).collect(Collectors.toList());
+
+        Optional<String> first = newList.stream().map(el -> el.toUpperCase()).findFirst();
+        Optional<String> any = newList.stream().map(el -> el.toUpperCase()).findAny();
+        long count = newList.stream().count();
 
         /**
          * method chaining
