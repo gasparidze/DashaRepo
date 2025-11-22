@@ -17,6 +17,18 @@ public class Main {
         };
         boolean digits = validator3.validate("123");
         System.out.println(digits);
+
+        Validator validatorImpl = new ValidatorImpl();
+        validatorImpl.validate("asd");
+
+        Validator validator = new Validator() {
+            @Override
+            public boolean validate(String data) {
+                return data.isEmpty();
+            }
+        };
+
+        Validator validator4 = data -> data.isEmpty();
     }
 }
 

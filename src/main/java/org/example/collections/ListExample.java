@@ -1,6 +1,7 @@
 package org.example.collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -44,5 +45,35 @@ public class ListExample {
         System.out.println(stringList.isEmpty()); // false
         System.out.println(stringList.remove(3)); // element
         System.out.println(stringList.remove("from Russia")); // true
+
+        List<String> strings = new ArrayList<>();
+        strings.add("hello");
+        strings.add("from");
+        strings.add("russia");
+
+        /**
+         * ConcurrentModificationException - т.е. нельзя одновременно бегать по листу или другой коллекции и как-то
+         * модифиуировать ее (добавлять/удалять элементы)
+         * для того, чтобы можно было модифицировать коллекции применяют итераторы
+         */
+//        for (String string : strings) {
+//            strings.add(string + "test");
+//        }
+
+        /**
+         * работает с fori и не работает с for
+         *
+         * ConcurrentModificationException не возникнет, потому что нет итератора, а - итератор следит за структурными изменениями коллекции (добавление/удаление элементов).
+         * ConcurrentModificationException относится только к коллекциям, массивы такое исключение не выбрасывают
+         */
+//        for (int i = 0; i < strings.size(); i++) {
+//            strings.remove(strings.get(i));
+//        }
+        Iterator<String> iterator = strings.iterator();
+        while (iterator.hasNext()){
+            iterator.next();
+            iterator.remove();
+        }
+        System.out.println(strings);
     }
 }
