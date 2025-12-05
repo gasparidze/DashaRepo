@@ -1,10 +1,13 @@
 package org.example.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -38,31 +41,87 @@ public class StreamExample {
      * 4) distinct/count/limit
      */
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("Hello");
-        list.add("World");
-        list.add("From Russia");
-
-        List<String> newList = list.stream().map(el -> el.toUpperCase()).collect(Collectors.toList());
-
-        System.out.println(list);
-        System.out.println(newList);
-
-        System.out.println("peek");
-        List<String> collect = newList.stream().peek(System.out::println).map(el -> el.toUpperCase()).collect(Collectors.toList());
-
-        Optional<String> first = newList.stream().map(el -> el.toUpperCase()).findFirst();
-        Optional<String> any = newList.stream().map(el -> el.toUpperCase()).findAny();
-        long count = newList.stream().count();
-
-        /**
-         * method chaining
-         */
-        Set<String> set = list.stream()
-                .filter(el -> el.contains("World"))
-                .map(el -> el.toUpperCase())
-                .collect(Collectors.toSet());
-        System.out.println(set);
+//        List<String> list = new ArrayList<>();
+//        list.add("Hello");
+//        list.add("World");
+//        list.add("From Russia");
+//
+//        List<String> newList = list.stream().map(el -> el.toUpperCase()).collect(Collectors.toList());
+//
+//        System.out.println(list);
+//        System.out.println(newList);
+//
+//        System.out.println("peek");
+//        List<String> collect = newList.stream().peek(System.out::println).map(el -> el.toUpperCase()).collect(Collectors.toList());
+//
+//        Optional<String> first = newList.stream().map(el -> el.toUpperCase()).findFirst();
+//        Optional<String> any = newList.stream().map(el -> el.toUpperCase()).findAny();
+//        long count = newList.stream().count();
+//
+//        /**
+//         * method chaining
+//         */
+//        Set<String> set = list.stream()
+//                .filter(el -> el.contains("World"))
+//                .map(el -> el.toUpperCase())
+//                .collect(Collectors.toSet());
+//        System.out.println(set);
+//
+//        Student student1 = new Student("Alice", 4);
+//        Student student2 = new Student("Bob", 2);
+//        Student student3 = new Student("Marvin", 5);
+//        Student student4 = new Student("Kate", 5);
+//        Student student5 = new Student("Masha", 3);
+//        Student student6 = new Student("Dasha", 4);
+//
+//        List<Student> studentList = new ArrayList<>();
+//        studentList.add(student1);
+//        studentList.add(student2);
+//        studentList.add(student3);
+//        studentList.add(student4);
+//        studentList.add(student5);
+//        studentList.add(student6);
+//
+//        Faculty math = new Faculty("math", List.of(student1, student2));
+//        Faculty literature = new Faculty("literature", List.of(student3, student4));
+//        Faculty sport = new Faculty("sport", List.of(student5, student6));
+//        List<Faculty> faculties = new ArrayList<>();
+//        faculties.add(math);
+//        faculties.add(literature);
+//        faculties.add(sport);
+//
+//        faculties.stream().forEach(System.out::println);
+//
+//        /**
+//         * Вывести всех студентов всех факультетов, вот здесь приходит на помощь метод flatMap
+//         *
+//         */
+//        faculties.stream()
+//                .map(el -> el.getStudents())
+//                .forEach(System.out::println);
+//
+//        faculties.stream()
+//                .flatMap(el -> el.getStudents().stream())
+//                .map(el -> el.getName().toUpperCase())
+//                .forEach(System.out::println);
+//
+//        faculties.stream().forEach(el -> el.getStudents().stream()
+//                .forEach(student -> System.out.println(student)));
+//
+//        List<Student> allStudents = faculties.stream()
+//                .flatMap(t -> t.getStudents().stream())
+//                .collect(Collectors.toList());
+//
+//        List<List<Student>> allStudents1 = faculties.stream()
+//                .map(Faculty::getStudents)
+//                .collect(Collectors.toList());
+//
+//        int[] numbers = {1, 2, 3};
+//        /**
+//         * Arrays.stream(numbers) - это IntStream, а не Stream<Integer>,
+//         * для преобразования в Stream<Integer> используем boxed()
+//         */
+//        Stream<Integer> stream = Arrays.stream(numbers).boxed();
 
         Student student1 = new Student("Alice", 4);
         Student student2 = new Student("Bob", 2);
@@ -87,22 +146,42 @@ public class StreamExample {
         faculties.add(literature);
         faculties.add(sport);
 
-        faculties.stream().forEach(System.out::println);
+        System.out.println(studentList);
+        List<Student> test = studentList.stream().peek(student -> student.setName("test")).collect(Collectors.toList());
+        System.out.println(test);
+        System.out.println(studentList);
+        Optional<Student> any = studentList.stream().findAny();
+        System.out.println(any);
 
-        /**
-         * Вывести всех студентов всех факультетов, вот здесь приходит на помощь метод flatMap
-         *
-         */
-        faculties.stream()
-                .map(el -> el.getStudents())
-                .forEach(System.out::println);
+        String collect = studentList.stream()
+                .map(el -> el.getName())
+                .collect(Collectors.joining(", ", "(", ")"));
+        System.out.println(collect);
 
-        faculties.stream()
-                .flatMap(el -> el.getStudents().stream())
-                .map(el -> el.getName().toUpperCase())
-                .forEach(System.out::println);
+        Long count = studentList.stream().collect(Collectors.counting());
+        System.out.println(count);
 
-        faculties.stream().forEach(el -> el.getStudents().stream()
-                .forEach(student -> System.out.println(student)));
+        Map<Integer, List<Student>> studentsByAverageScore = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getAverageScore));
+        System.out.println(studentsByAverageScore);
+
+        Map<Integer, Long> grouping = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getAverageScore , Collectors.counting()));
+        System.out.println(grouping);
+
+        Map<String, Double> average = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getName , Collectors.averagingInt(Student::getAverageScore)));
+        System.out.println(average);
+
+        Map<Integer, String> groupByName = studentList.stream()
+                .collect(
+                        Collectors.groupingBy(Student::getAverageScore ,
+                        Collectors.mapping(Student::getName , Collectors.joining(", ")))
+                );
+        System.out.println(groupByName);
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        boolean result = numbers.stream().noneMatch(el -> el == 2);
+        System.out.println(result);
     }
 }
