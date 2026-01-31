@@ -11,7 +11,8 @@ public class Lion extends Animal{
 
     @Override
     public void sayHello() {
-        System.out.println("hello from lion");
+        String name = "kate";
+        System.out.println("hello from lion " + name);
     }
 
     @Override
