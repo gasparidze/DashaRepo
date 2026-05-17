@@ -28,6 +28,13 @@ package org.example.multitheading.thread_creating.sync;
  */
 public class Counter {
     private int count;
+    private static String description;
+
+    public static void setDescription(String newDescription){
+        synchronized (Counter.class){
+            description = newDescription;
+        }
+    }
 
     /**
      * ядер > потоков
@@ -41,7 +48,10 @@ public class Counter {
      * В данном случае поле count - непотокобезопасно, происходит рассинхранизация потоков
      */
     public void increment(){
-        count++;
+        // синхронизируюсь на мониторе данного объекта
+        synchronized (this){
+            count++;
+        }
     }
 
     public void decrement(){

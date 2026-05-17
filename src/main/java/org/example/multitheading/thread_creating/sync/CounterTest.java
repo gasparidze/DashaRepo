@@ -5,8 +5,8 @@ package org.example.multitheading.thread_creating.sync;
  */
 public class CounterTest {
     public static void main(String[] args) throws InterruptedException {
-//        Counter counter = new Counter();
-        CounterAtomic counter = new CounterAtomic();
+        Counter counter = new Counter();
+//        CounterAtomic counter = new CounterAtomic();
         CounterThread counterThread1 = new CounterThread(counter);
         CounterThread counterThread2 = new CounterThread(counter);
         CounterThread counterThread3 = new CounterThread(counter);

@@ -1,4 +1,4 @@
-package org.example.multitheading.thread_creating;
+package org.example.multitheading.thread_creating.creating_threads;
 
 public class NewThread extends Thread{
     @Override
