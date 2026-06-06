@@ -1,5 +1,7 @@
 package org.example.multitheading.thread_creating.sync;
 
+import java.util.concurrent.locks.Lock;
+
 /**
  * Создать класс Counter с одним полем int count и добавить методы:
  * 1) getCount()
